@@ -2,6 +2,7 @@ import json
 
 import discord
 import logging
+import os
 
 from util import text
 from discord.ext import commands
@@ -11,16 +12,20 @@ _log = logging.getLogger(__name__)
 EXTENSIONS = [
     "cogs.general",
     "cogs.explosm",
+    "cogs.image_generator",
     "cogs.insult",
     "cogs.mtg",
     "cogs.reddit",
     "cogs.static",
-    "cogs.xkdc"
+    "cogs.xkcd"  
 ]
 
 def load_config():
     with open("data/config.json", "r") as f:
-        return json.load(f)
+        config = json.load(f)
+        # the replicate API wants the API token as an environment variable
+        os.environ["REPLICATE_API_TOKEN"] = config["REPLICATE_TOKEN"]
+        return config
 
 class GoodBoiBot(commands.Bot):
     command_prefix = ["boi ","Boi "]
@@ -41,7 +46,7 @@ class GoodBoiBot(commands.Bot):
 
     async def on_ready(self):
         await self.change_presence(activity=discord.Game(name="boi help"))
-        if("ANNOUNCE_GUILDS" in self.config):
+        if "ANNOUNCE_GUILDS" in self.config:
             for announce_guild in self.config["ANNOUNCE_GUILDS"]:
                 guildId = int(announce_guild["GUILD_ID"])
                 guild = self.get_guild(guildId)

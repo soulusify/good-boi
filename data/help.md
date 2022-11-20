@@ -9,6 +9,9 @@ General:
 Explosm:
 * explosm | c&h | cah       - Posts a random explosm.net cyanide & happiness comic
 
+Image generation (stable diffusion):
+* generate <prompt>         - Generates an image for the given prompt
+
 Insult:
 * insultme                  - Insults you
 * insult {member}           - Insults the specified member
@@ -31,8 +34,8 @@ Reddit:
 Static Files:
 * fuckin | fockin           - Posts the ProZD "THEY FUCKIN" mp3 file
 
-XKDC:
-* xkdc                      - Posts the most recent XKDC comic
-* xkdc random               - Posts a random XKDC comic
-* xkdc {number}             - Posts the XKDC comic with the specified number
+xkcd:
+* xkcd                      - Posts the most recent xkcd comic
+* xkcd random               - Posts a random xkcd comic
+* xkcd {number}             - Posts the xkcd comic with the specified number
 ```
